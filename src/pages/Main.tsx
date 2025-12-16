@@ -133,14 +133,14 @@ export default function MainPage() {
       <div className="mx-auto max-w-100% px-4 md:px-[153px] bg-[#0090FB] flex items-center h-screen">
         <div className="container mx-auto w-full">
           <div className="space-y-8">
-            <h1 className="text-white text-2xl md:text-4xl font-bold leading-tight">
+            <h1 className="text-white text-3xl md:text-5xl font-bold leading-tight">
               <AnimatedText
                 text="큐브 AI, 실무형 인공지능 학습의 시작"
                 isVisible={true}
                 speed={80}
               />
             </h1>
-            <p className="text-white text-base md:text-xl font-medium leading-relaxed">
+            <p className="text-white text-lg md:text-2xl font-medium leading-relaxed">
               <AnimatedText
                 text="AI를 처음 배우는 사람도, 개념부터 실습까지"
                 isVisible={true}
@@ -159,7 +159,7 @@ export default function MainPage() {
                   const editorSection = document.getElementById('editor-section');
                   editorSection?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="bg-white text-[#0090FB] px-8 py-3 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg"
+                className="bg-white text-[#0090FB] px-10 py-4 rounded-lg font-bold text-xl hover:bg-gray-100 transition-colors duration-200 shadow-lg"
               >
                 시작하기
               </button>
