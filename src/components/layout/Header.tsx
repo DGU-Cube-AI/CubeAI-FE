@@ -46,6 +46,16 @@ export default function Header({ onOpenIdModal }: HeaderProps) {
         </div>
         <nav className="hidden md:flex items-center gap-[57px] text-white text-xl font-bold">
           <button
+            onClick={() => handleNavigation('/api-docs')}
+            className={`h-[72px] px-4 transition-all duration-200 ${
+              isActive('/api-docs')
+                ? 'text-white border-b-2 border-white'
+                : 'text-white/80 hover:text-white hover:border-b-2 hover:border-white/60'
+            }`}
+          >
+            API
+          </button>
+          <button
             onClick={() => handleNavigation('/')}
             className={`h-[72px] px-4 transition-all duration-200 ${
               isActive('/')

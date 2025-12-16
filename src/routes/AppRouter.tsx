@@ -43,6 +43,10 @@ const router = createBrowserRouter([
           path: '/editor',
           element: <EditorPage />,
         },
+        {
+          path: '/api-docs',
+          lazy: () => import('@/pages/ApiDocs').then(module => ({ Component: module.default })),
+        },
       ]),
       {
         path: '*',
