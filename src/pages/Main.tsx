@@ -1,4 +1,3 @@
-import { useState, useEffect, useRef } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import TwoCube from '@/assets/twoblocks.png';
@@ -6,80 +5,8 @@ import One from '@/assets/main/1.png';
 import Two from '@/assets/main/2.png';
 import Three from '@/assets/main/3.png';
 import Four from '@/assets/main/4.png';
-
-// 타이핑 애니메이션 hook
-function useTypingAnimation(text: string, isVisible: boolean, speed: number = 50) {
-  const [displayedText, setDisplayedText] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
-
-  useEffect(() => {
-    if (!isVisible) {
-      setDisplayedText('');
-      setIsTyping(false);
-      return;
-    }
-
-    setIsTyping(true);
-    setDisplayedText('');
-    let currentIndex = 0;
-
-    const typingInterval = setInterval(() => {
-      if (currentIndex < text.length) {
-        setDisplayedText(text.slice(0, currentIndex + 1));
-        currentIndex++;
-      } else {
-        setIsTyping(false);
-        clearInterval(typingInterval);
-      }
-    }, speed);
-
-    return () => clearInterval(typingInterval);
-  }, [text, isVisible, speed]);
-
-  return { displayedText, isTyping };
-}
-
-//섹션 가시성 감지 hook
-function useSectionVisibility() {
-  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
-  const sectionRefs = useRef<Map<string, HTMLElement>>(new Map());
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          const sectionId = entry.target.getAttribute('data-section-id');
-          if (!sectionId) return;
-
-          if (entry.isIntersecting) {
-            setVisibleSections(prev => new Set(prev).add(sectionId));
-          }
-        });
-      },
-      { threshold: 0.3 },
-    );
-
-    sectionRefs.current.forEach(element => {
-      observer.observe(element);
-    });
-
-    return () => {
-      sectionRefs.current.forEach(element => {
-        observer.unobserve(element);
-      });
-    };
-  }, []);
-
-  const setSectionRef = (id: string, element: HTMLElement | null) => {
-    if (element) {
-      sectionRefs.current.set(id, element);
-    } else {
-      sectionRefs.current.delete(id);
-    }
-  };
-
-  return { visibleSections, setSectionRef };
-}
+import { useTypingAnimation } from '@/hooks/animation/useTypingAnimation';
+import { useSectionVisibility } from '@/hooks/animation/useSectionVisibility';
 
 //애니메이션 컴포넌트
 function AnimatedImage({
