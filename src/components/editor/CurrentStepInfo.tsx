@@ -24,7 +24,7 @@ export default function CurrentStepInfo({
   return (
     <div className="flex flex-col flex-1 items-center justify-center h-full">
       <p className="text-center mb-3 text-xl text-gray-700">
-        🚀 현재 단계: <strong className="text-blue-600">{editorStepKor[editorStep]}</strong>
+        현재 단계: <strong className="text-blue-600">{editorStepKor[editorStep]}</strong>
       </p>
       <div className="flex gap-6">
         <button
