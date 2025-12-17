@@ -3,3 +3,4 @@ export const API = {} as const;
 
 // Edge Function 프록시를 통한 API 경로
 export const AI_BACKEND_URL = '/api';
+export const CHAT_BACKEND_URL = '/chat';

@@ -5,6 +5,10 @@
       "destination": "http://211.188.56.255:9022/$1"
     },
     {
+      "source": "/chat/(.*)",
+      "destination": "http://211.188.56.255:5000/$1"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
@@ -12,6 +16,14 @@
   "headers": [
     {
       "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "*" }
+      ]
+    },
+    {
+      "source": "/chat/(.*)",
       "headers": [
         { "key": "Access-Control-Allow-Origin", "value": "*" },
         { "key": "Access-Control-Allow-Methods", "value": "GET,POST,OPTIONS" },

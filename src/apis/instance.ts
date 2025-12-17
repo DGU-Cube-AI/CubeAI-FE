@@ -1,10 +1,9 @@
 import axios, { AxiosInstance } from 'axios';
-import { AI_BACKEND_URL } from '@/constants/api';
+import { AI_BACKEND_URL, CHAT_BACKEND_URL } from '@/constants/api';
 
 export type ServerType = 'MAIN' | 'CHAT' | 'AI';
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-const CHAT_BACKEND_URL = import.meta.env.VITE_CHAT_BACKEND_URL;
 
 const BASE_URLS: Record<ServerType, string> = {
   MAIN: BACKEND_URL,

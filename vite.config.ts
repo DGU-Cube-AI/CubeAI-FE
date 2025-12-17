@@ -16,9 +16,16 @@ export default defineConfig(({ mode }) => {
     server: {
       proxy: {
         '/api': {
-          target: env.VITE_AI_BACKEND_URL,
+          target: env.VITE_AI_BACKEND_URL || 'http://211.188.56.255:9022',
           changeOrigin: true,
           rewrite: path => path.replace(/^\/api/, ''),
+          secure: false,
+        },
+        '/chat': {
+          target: env.VITE_CHAT_BACKEND_URL || 'http://211.188.56.255:5000',
+          changeOrigin: true,
+          rewrite: path => path.replace(/^\/chat/, ''),
+          secure: false,
         },
       },
     },
