@@ -140,99 +140,101 @@ export default function EditorPage() {
   return (
     <>
       {isIdModalOpen && <WelcomeDialog isOpen={isIdModalOpen} onClose={handleCloseIdModal} />}
-      <DragProvider>
-        <div className="flex flex-col h-screen">
-          <Header onOpenIdModal={handleOpenIdModal} />
+      <div className="scale-75 origin-top-left w-[133.33vw] h-screen">
+        <DragProvider>
+          <div className="flex flex-col h-[133.33vh] bg-white">
+            <Header onOpenIdModal={handleOpenIdModal} />
 
-          {/* ───── 상단 탭 바 ───── */}
-          <section className="flex justify-between items-end min-h-[105px] bg-[#EEF6FF] border-b-[2px] border-[#C3CCD9]">
-            <div className="w-100 font-bold text-2xl text-center">
-              <LeftTabList>
-                {leftTabsConfig.map(tab => {
-                  const tabStepIndex = stepOrder.indexOf(tab.step);
-                  const isDisabled = tabStepIndex > currentStepIndex;
+            {/* ───── 상단 탭 바 ───── */}
+            <section className="flex justify-between items-end min-h-[105px] bg-[#EEF6FF] border-b-[2px] border-[#C3CCD9] ">
+              <div className="w-100 font-bold text-2xl text-center">
+                <LeftTabList>
+                  {leftTabsConfig.map(tab => {
+                    const tabStepIndex = stepOrder.indexOf(tab.step);
+                    const isDisabled = tabStepIndex > currentStepIndex;
 
-                  return (
-                    <LeftTabTrigger
-                      key={tab.value}
-                      value={tab.value}
-                      disabled={isDisabled} // disabled 속성 전달
-                    >
-                      {tab.label}
-                    </LeftTabTrigger>
-                  );
-                })}
-              </LeftTabList>
-            </div>
+                    return (
+                      <LeftTabTrigger
+                        key={tab.value}
+                        value={tab.value}
+                        disabled={isDisabled} // disabled 속성 전달
+                      >
+                        {tab.label}
+                      </LeftTabTrigger>
+                    );
+                  })}
+                </LeftTabList>
+              </div>
 
-            <CurrentStepInfo
-              editorStep={editorStep}
-              currentStepIndex={currentStepIndex}
-              stepOrder={stepOrder}
-              handleBackStep={handleBackStep}
-              handleCompleteAndNextStep={handleCompleteAndNextStep}
-            />
+              <CurrentStepInfo
+                editorStep={editorStep}
+                currentStepIndex={currentStepIndex}
+                stepOrder={stepOrder}
+                handleBackStep={handleBackStep}
+                handleCompleteAndNextStep={handleCompleteAndNextStep}
+              />
 
-            {/* 오른쪽 탭 */}
-            <div className="w-100 font-bold text-2xl text-center">
-              <RightTabList>
-                <RightTabTrigger value="코드">코드</RightTabTrigger>
-                <RightTabTrigger value="데이터">데이터</RightTabTrigger>
-                <RightTabTrigger value="학습">학습</RightTabTrigger>
-              </RightTabList>
-            </div>
-          </section>
-
-          <section className="flex justify-between flex-1 min-h-0">
-            {/* 왼쪽 사이드바 */}
-            <aside className="flex w-100 border-r-[2px] border-[#C3CCD9] font-bold text-2xl text-center min-h-0">
-              <LeftTabsContainer>
-                <LeftTabContent value="데이터 전처리">
-                  {/* 드래그 가능한 노드 팔레트 */}
-                  <NodePalette selectedTab="데이터 전처리" />
-                </LeftTabContent>
-                <LeftTabContent value="모델 설계">
-                  <NodePalette selectedTab="모델 설계" />
-                </LeftTabContent>
-                <LeftTabContent value="학습하기">
-                  <NodePalette selectedTab="학습하기" />
-                </LeftTabContent>
-                <LeftTabContent value="평가하기">
-                  <NodePalette selectedTab="평가하기" />
-                </LeftTabContent>
-              </LeftTabsContainer>
-            </aside>
-
-            {/* 여기에 DND 요소 ㄱㄱ */}
-            <section className="flex-1 w-full min-h-0">
-              {/* 중앙 캔버스 영역 (드롭 지점) */}
-              <Workspace editorStep={editorStep} />
+              {/* 오른쪽 탭 */}
+              <div className="w-100 font-bold text-2xl text-center ">
+                <RightTabList>
+                  <RightTabTrigger value="코드">코드</RightTabTrigger>
+                  <RightTabTrigger value="데이터">데이터</RightTabTrigger>
+                  <RightTabTrigger value="학습">학습</RightTabTrigger>
+                </RightTabList>
+              </div>
             </section>
 
-            {/* 오른쪽 사이드바 */}
-            <aside className="flex w-100 min-h-0 h-[77vh] font-bold text-2xl text-center border-l-[2px] border-[#C3CCD9]">
-              <RightTabsContainer>
-                <RightTabContent value="코드">
-                  {/* 변환 결과 표시 */}
-                  <Code
-                    codeString={isConverting ? '# Generating…' : convertedCode}
-                    currentStage={editorStep}
-                  />
-                </RightTabContent>
-                <RightTabContent value="데이터">
-                  <Data />
-                </RightTabContent>
-                <RightTabContent value="학습">
-                  <Training currentStage={editorStep} />
-                </RightTabContent>
-              </RightTabsContainer>
-            </aside>
-          </section>
+            <section className="flex justify-between flex-1 min-h-0">
+              {/* 왼쪽 사이드바 */}
+              <aside className="flex w-100 border-r-[2px] border-[#C3CCD9] font-bold text-2xl text-center min-h-0">
+                <LeftTabsContainer>
+                  <LeftTabContent value="데이터 전처리">
+                    {/* 드래그 가능한 노드 팔레트 */}
+                    <NodePalette selectedTab="데이터 전처리" />
+                  </LeftTabContent>
+                  <LeftTabContent value="모델 설계">
+                    <NodePalette selectedTab="모델 설계" />
+                  </LeftTabContent>
+                  <LeftTabContent value="학습하기">
+                    <NodePalette selectedTab="학습하기" />
+                  </LeftTabContent>
+                  <LeftTabContent value="평가하기">
+                    <NodePalette selectedTab="평가하기" />
+                  </LeftTabContent>
+                </LeftTabsContainer>
+              </aside>
 
-          {/* 드래그 중인 요소 미리보기 */}
-          <DragPreview />
-        </div>
-      </DragProvider>
+              {/* 여기에 DND 요소 ㄱㄱ */}
+              <section className="flex-1 w-full min-h-0">
+                {/* 중앙 캔버스 영역 (드롭 지점) */}
+                <Workspace editorStep={editorStep} />
+              </section>
+
+              {/* 오른쪽 사이드바 */}
+              <aside className="flex w-100 min-h-0 h-[110.33vh] font-bold text-2xl text-center border-l-[2px] border-[#C3CCD9]">
+                <RightTabsContainer>
+                  <RightTabContent value="코드">
+                    {/* 변환 결과 표시 */}
+                    <Code
+                      codeString={isConverting ? '# Generating…' : convertedCode}
+                      currentStage={editorStep}
+                    />
+                  </RightTabContent>
+                  <RightTabContent value="데이터">
+                    <Data />
+                  </RightTabContent>
+                  <RightTabContent value="학습">
+                    <Training currentStage={editorStep} />
+                  </RightTabContent>
+                </RightTabsContainer>
+              </aside>
+            </section>
+
+            {/* 드래그 중인 요소 미리보기 */}
+            <DragPreview />
+          </div>
+        </DragProvider>
+      </div>
       <AiChatButton />
       {/* userId가 있을 때만 SSEComponent 실행 */}
       {userId && (

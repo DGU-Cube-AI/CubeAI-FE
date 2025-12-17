@@ -350,7 +350,7 @@ export default function Workspace({ editorStep }: WorkspaceProps) {
   return (
     <div
       ref={surfaceRef}
-      className="relative flex-1 min-h-0 h-[77vh] bg-white overflow-y-auto"
+      className="relative flex-1 min-h-0 h-[110.33vh] bg-white overflow-y-auto"
       onPointerUp={handlePointerUp}
     >
       {renderGrid()}

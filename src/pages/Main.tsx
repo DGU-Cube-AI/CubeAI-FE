@@ -114,7 +114,7 @@ export default function MainPage() {
           <AnimatedImage
             src={One}
             alt="One"
-            className="max-w-[629px] max-h-[419px] w-full h-auto object-contain"
+            className="max-w-[635px] max-h-[384px] w-full h-auto object-contain"
             isVisible={visibleSections.has('section1')}
           />
         </div>
@@ -198,7 +198,7 @@ export default function MainPage() {
           <AnimatedImage
             src={Two}
             alt="Two"
-            className="max-w-[629px] max-h-[419px] w-full h-auto object-contain"
+            className="max-w-[635px] max-h-[384px] w-full h-auto object-contain"
             isVisible={visibleSections.has('section2')}
           />
         </div>
@@ -214,7 +214,7 @@ export default function MainPage() {
           <AnimatedImage
             src={Three}
             alt="Three"
-            className="max-w-[629px] max-h-[419px] w-full h-auto object-contain"
+            className="max-w-[635px] max-h-[384px] w-full h-auto object-contain"
             isVisible={visibleSections.has('section3')}
           />
         </div>
@@ -292,7 +292,7 @@ export default function MainPage() {
           <AnimatedImage
             src={Four}
             alt="Four"
-            className="max-w-[629px] max-h-[419px] w-full h-auto object-contain"
+            className="max-w-[635px] max-h-[384px] w-full h-auto object-contain"
             isVisible={visibleSections.has('section4')}
           />
         </div>
